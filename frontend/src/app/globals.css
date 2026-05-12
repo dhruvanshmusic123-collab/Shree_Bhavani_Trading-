@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-syne: 'Syne', serif;
+  --brand-orange: #EA580C;
+  --brand-blue: #1E3A8A;
+  --dark: #0F172A;
+  --dark-100: #1E293B;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: #0F172A;
+  color: #F8FAFC;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1E293B; }
+::-webkit-scrollbar-thumb { background: #EA580C; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #FB923C; }
+
+/* Selection */
+::selection { background: rgba(234, 88, 12, 0.3); color: #fff; }
+
+/* Focus rings */
+:focus-visible { outline: 2px solid #EA580C; outline-offset: 2px; }
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 lg:py-28;
+  }
+
+  .heading-xl {
+    @apply font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight;
+  }
+
+  .heading-lg {
+    @apply font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight;
+  }
+
+  .heading-md {
+    @apply font-display text-2xl sm:text-3xl font-bold;
+  }
+
+  .text-gradient-orange {
+    @apply bg-gradient-to-r from-orange-500 to-orange-300 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-blue {
+    @apply bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-orange-glow hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 border border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 border border-white/20 text-white hover:border-white/60 hover:bg-white/10 font-medium px-6 py-3 rounded-lg transition-all duration-300;
+  }
+
+  .card-glass {
+    @apply bg-dark-100/60 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+
+  .card-industrial {
+    @apply bg-dark-100 border border-white/5 rounded-xl hover:border-brand-orange/30 transition-all duration-300 hover:shadow-card-hover;
+  }
+
+  .badge-orange {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-orange/10 text-brand-orange border border-brand-orange/20;
+  }
+
+  .badge-blue {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-900/30 text-blue-400 border border-blue-800/30;
+  }
+
+  .input-field {
+    @apply w-full bg-dark-200 border border-white/10 text-white placeholder-gray-500 rounded-lg px-4 py-3 focus:outline-none focus:border-brand-orange/60 focus:ring-1 focus:ring-brand-orange/30 transition-all duration-200;
+  }
+
+  .nav-link {
+    @apply text-gray-300 hover:text-white text-sm font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-orange after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .section-tag {
+    @apply inline-flex items-center gap-2 text-brand-orange text-sm font-semibold uppercase tracking-widest mb-4;
+  }
+
+  /* Industrial grid pattern */
+  .grid-pattern {
+    background-image:
+      linear-gradient(rgba(234, 88, 12, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(234, 88, 12, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Glowing border */
+  .glow-border {
+    @apply border border-brand-orange/40 shadow-orange-glow;
+  }
+
+  /* Shimmer loading */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      #1E293B 25%,
+      #334155 50%,
+      #1E293B 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+/* Hero animated background */
+.hero-bg-animated {
+  background: radial-gradient(ellipse at top left, rgba(234, 88, 12, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom right, rgba(30, 58, 138, 0.2) 0%, transparent 50%),
+              linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+}
+
+/* Pipe decoration */
+.pipe-vertical {
+  width: 4px;
+  background: linear-gradient(to bottom, transparent, #EA580C, transparent);
+}
+
+.pipe-horizontal {
+  height: 4px;
+  background: linear-gradient(to right, transparent, #EA580C, transparent);
+}
+
+/* Product card hover */
+.product-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.product-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(234, 88, 12, 0.3);
+}
+
+/* Table styles */
+.table-dark {
+  @apply w-full text-sm text-left;
+}
+.table-dark thead tr {
+  @apply bg-dark-200 text-gray-400 uppercase text-xs tracking-wider;
+}
+.table-dark thead th {
+  @apply px-4 py-3 font-medium;
+}
+.table-dark tbody tr {
+  @apply border-b border-white/5 hover:bg-white/5 transition-colors;
+}
+.table-dark tbody td {
+  @apply px-4 py-3 text-gray-300;
+}
+
+/* Marquee */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marquee 30s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Page transitions */
+.page-transition {
+  animation: fadeIn 0.4s ease-out;
+}
