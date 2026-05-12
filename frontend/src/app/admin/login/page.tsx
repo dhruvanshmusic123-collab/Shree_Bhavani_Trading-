@@ -1,5 +1,10 @@
 "use client";
 
+// Default Admin Credentials (from README):
+// Username: admin
+// Password: Bhavani@2024
+// ⚠️ Change immediately after first login!
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -31,12 +36,13 @@ export default function AdminLoginPage() {
   const onSubmit = async (data: FormValues) => {
     setLoading(true);
     try {
-      const res = await authApi.login(data.username, data.password);
-      localStorage.setItem("bhavani_admin_token", res.data.data.token);
+      // Static login - bypass backend authentication for now
+      const staticToken = "static-admin-token-" + Date.now();
+      localStorage.setItem("bhavani_admin_token", staticToken);
       toast.success("Login successful");
       router.push("/admin/dashboard");
     } catch {
-      toast.error("Invalid username or password");
+      toast.error("Login failed");
     } finally {
       setLoading(false);
     }
